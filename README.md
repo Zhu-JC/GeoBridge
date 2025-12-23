@@ -46,7 +46,7 @@ python train/Pseudotime_train.py --model EMT --interval 100 --num_cluster 5
 ```
 ### Downstream analysis of single-snapshot data
 ```
-python downstream_analysis/EMT_MET_analysis.py
+python downstream_analysis/EMT_pseudotime_analysis.py
 ```
 ### Do heldout test
 ```
