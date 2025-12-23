@@ -1,5 +1,5 @@
 # GeoBridge
- Generating and navigating single cell dynamics viaby a geodesic bridge between nonlinear transcriptional and linear latent manifolds
+ Generating and navigating single cell dynamics via a geodesic bridge between nonlinear transcriptional and linear latent manifolds
 ![Schematic of GeoBridge](./readme/schematic.png)
 ## Geodesics path of EMT(green)-MET(orange) progression
 | original nonlinear manifold | latent linear manifold (EMT) | latent linear manifold (MET) |
