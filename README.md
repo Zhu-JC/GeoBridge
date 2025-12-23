@@ -60,5 +60,5 @@ GeoBridge/
 ├── results/    
 ├── requirements.txt         
 └── README.md                
-## Contact
+## Contact 💬
 📧Email: zhujunchao2022@sibcb.ac.cn
