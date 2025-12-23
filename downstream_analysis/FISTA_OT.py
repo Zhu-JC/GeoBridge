@@ -1,8 +1,6 @@
 import numpy as np
 import Get_Probability_Measures
 from tqdm import tqdm
-import torch
-from numba import njit, prange
 def fista_ot(C, data_s, data_t, method ='neighbor', lambda_reg=0.1, max_iter=1000, tol=1e-6):
     """
     使用FISTA算法求解最优传输问题。

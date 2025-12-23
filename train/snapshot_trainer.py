@@ -3,7 +3,6 @@ import sys, os
 current_path = os.getcwd()
 sys.path.append(os.path.join(current_path, "train"))
 import torch
-import time
 import copy
 from torch.optim.lr_scheduler import CosineAnnealingLR
 import numpy as np

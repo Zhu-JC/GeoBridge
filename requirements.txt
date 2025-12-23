@@ -1,0 +1,13 @@
+anndata
+torch
+numpy
+matplotlib
+scipy
+pandas
+POT
+tqdm
+scikit-learn
+seaborn
+pathlib
+scanpy
+omicverse
