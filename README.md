@@ -14,7 +14,7 @@
 ```python
 conda create -n GeoBridge python=3.9
 conda activate GeoBridge
-```python
+```
 ### 2️⃣ Install the FrEIA dependency
 pip install git+https://github.com/vislearn/FrEIA.git
 
