@@ -53,7 +53,7 @@ python downstream_analysis/EMT_pseudotime_analysis.py
 python train/Heldout_train.py --model EMT --heldout 12
 ```
 ## Project Structure 🌈
-GeoBridge/
+GeoBridge/   
 ├── train/                   
 ├── downstream_analysis/    
 ├── data/                   
