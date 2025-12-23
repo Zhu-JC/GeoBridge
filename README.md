@@ -30,3 +30,25 @@ cd GeoBridge
 ```
 pip install -r requirements.txt
 ```
+## Usage
+### Train GeoBridge model of time-resolved data
+```
+python train/GeoBridge_train.py --model MET
+python train/GeoBridge_train.py --model EMT
+```
+### Downstream analysis
+```
+python downstream_analysis/EMT_MET_analysis.py
+```
+### Train GeoBridge model of single-snapshot data by *Pseudotime* initialization
+```
+python train/Pseudotime_train.py --model EMT --interval 100 --num_cluster 5
+```
+### Downstream analysis of single-snapshot data
+```
+python downstream_analysis/EMT_MET_analysis.py
+```
+### Do heldout test
+```
+python train/Heldout_train.py --model EMT --heldout 12
+```
