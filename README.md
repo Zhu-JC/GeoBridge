@@ -54,6 +54,7 @@ python train/Heldout_train.py --model EMT --heldout 12
 ```
 ## Project Structure 🌈
 GeoBridge/
+
 ├── train/                   
 ├── downstream_analysis/    
 ├── data/                   
