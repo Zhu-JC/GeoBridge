@@ -5,13 +5,13 @@
 <table align="center">
   <tr>
     <!-- 左侧列 -->
-    <td align="center">
+    <td align="center" valign="middle">
       <h4>original nonlinear manifold</h4>
       <img src="./readme/MET_EMT_org.gif" width="350">
     </td>
 
     <!-- 右侧列 -->
-    <td align="center">
+    <td align="center" valign="middle">
       <h4>latent linear manifold</h4>
       <img src="./readme/EMT_eu.gif" width="350"><br>
       <img src="./readme/MET_eu.gif" width="350">
