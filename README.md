@@ -3,7 +3,7 @@
 ![Schematic of GeoBridge](./readme/schematic.png)
 ## Geodesics path of EMT(green)-MET(orange) progression
 <!-- 整体容器 -->
-<div align="center" style="display: flex; flex-direction: col; justify-content: center; align-items: flex-start; gap: 20px;">
+<div align="center" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 20px;">
 
   <!-- 左列：original nonlinear manifold -->
   <div style="flex: 1; text-align: center;">
