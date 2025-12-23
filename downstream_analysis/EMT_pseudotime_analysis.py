@@ -23,7 +23,7 @@ inn_true_t = load_trained_model(
     config=config,
     n_dim=n_dim
 )
-config['model_path'] = f'{output_dir}/pseudotime_model.pth'
+config['model_path'] = f'{output_dir}/EMT_pseudotime_model.pth'
 inn_pseudo_t = load_trained_model(
     config=config,
     n_dim=n_dim

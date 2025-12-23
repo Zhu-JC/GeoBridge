@@ -5,7 +5,7 @@ Main training script for the GeoBridge model of single-snapshot data.
 
 This script accepts a command-line argument to specify which model to train.
 Example usage:
-    python train/Pseudotime_train.py --model EMT
+    python train/Pseudotime_train.py --model EMT --interval 100 --num_cluster 5
 """
 import sys, os
 current_path = os.getcwd()
@@ -78,7 +78,7 @@ def run_training(model_name: str, interval: int, cluster: str, num_clusters: int
 
     # 6. 保存最佳模型
 
-    torch.save(trainer.best_model_state.state_dict(), f'{output_dir}/pseudotime_model.pth')
+    torch.save(trainer.best_model_state.state_dict(), f'{output_dir}/{model_name}_pseudotime_model.pth')
     np.save(f'{output_dir}/pseudo_t.npy', trainer.train_t_np)
     print(f"Best pseudotime model for '{model_name}' saved to {output_dir}")
 
