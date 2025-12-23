@@ -6,10 +6,9 @@
 <div align="left" style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 20px;">
 
   <!-- 左列：original nonlinear manifold -->
-  <div style="flex: 1; text-align: center;">
+  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px;">
     <h4>original nonlinear manifold</h4>
     <img src="./readme/MET_EMT_org.gif" width="400">
-  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px;">
     <h4>latent linear manifold</h4>
     <img src="./readme/EMT_eu.gif" width="380">
     <img src="./readme/MET_eu.gif" width="380">
