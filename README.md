@@ -9,3 +9,17 @@
 | original nonlinear manifold | latent linear manifold (Beta) | latent linear manifold (Ec) |
 |:----------------------------:|:-----------------------------:|:-----------------------------:|
 | ![original](./readme/Beta_Ec_org.gif) | ![EMT](./readme/sc_beta_eu.gif) | ![MET](./readme/sc_ec_eu.gif) |
+## Installation
+### 1️⃣ Create a new Conda environment
+conda create -n GeoBridge python=3.9
+conda activate GeoBridge
+
+### 2️⃣ Install the FrEIA dependency directly from GitHub
+pip install git+https://github.com/vislearn/FrEIA.git
+
+### 3️⃣ Clone the GeoBridge repository
+git clone https://github.com/Zhu-JC/GeoBridge.git
+cd GeoBridge
+
+### 4️⃣ (Optional) Install additional dependencies from requirements.txt
+pip install -r requirements.txt
