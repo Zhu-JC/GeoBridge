@@ -9,9 +9,6 @@
   <div style="flex: 1; text-align: center;">
     <h4>original nonlinear manifold</h4>
     <img src="./readme/MET_EMT_org.gif" width="400">
-  </div>
-
-  <!-- 右列（上下两图，latent linear manifold） -->
   <div style="flex: 1; display: flex; flex-direction: column; align-items: center; gap: 10px;">
     <h4>latent linear manifold</h4>
     <img src="./readme/EMT_eu.gif" width="380">
