@@ -19,6 +19,8 @@ conda activate GeoBridge
 ```
 pip install git+https://github.com/vislearn/FrEIA.git
 ```
+⚠️ **Note:** Do **not** use `pip install FrEIA`.  
+That command installs an outdated version which **does not support hard invertibility**.
 
 ### 3️⃣ Clone the GeoBridge repository
 ```
