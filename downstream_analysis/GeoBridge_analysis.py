@@ -89,10 +89,7 @@ def decide_fate(MET_weights, EMT_weights, threshold_score, threshold_weight, nam
     low_confidence_mask = (max_weights <= threshold_weight)
     # 确保 low_confidence_mask 不会覆盖上面已经标记的细胞 (虽然按逻辑不应该发生，但安全起见)
     cell_fate[low_confidence_mask] = 'Low_Confidence'
-    # 查看各类别细胞数量
-    unique_fates, counts = np.unique(cell_fate, return_counts=True)
-    for fate, count in zip(unique_fates, counts):
-        print(f'{fate}: {count} cells')
+
     return cell_fate
 
 def get_fate_list(All_data, All_label, inn_MET, inn_EMT, source_list, target_list, target, name1, name2):
@@ -527,6 +524,7 @@ def OT_gene_Mean_Dynamic_compair(data_use, t_use, inn_MET, inn_EMT, cell_fate, g
     z2_min = z2.min(dim=0, keepdim=True)[0]
     z2_max = z2.max(dim=0, keepdim=True)[0]
     z2 = scaled_output(z2)
+    t_use = torch.from_numpy(t_use).to(device)
     l_unique, inverse_indices = torch.unique(t_use, return_inverse=True)
 
     data_t2 = z2[target]
@@ -594,7 +592,7 @@ def OT_gene_Mean_Dynamic_compair(data_use, t_use, inn_MET, inn_EMT, cell_fate, g
     # filtered_data_np2[filtered_data_np2 < 0] = 0
     pd.DataFrame(filtered_data_np2).to_csv(f"{path}/{name2}.csv")
     data = data_use.cpu().detach().numpy()
-    t = t_use
+    t = t_use.cpu().detach().numpy()
     means = np.array([data[t == lbl].mean(axis=0) for lbl in np.unique(t)])
     matplotlib.use('Agg')
     # 绘制每个特征的散点图
@@ -640,6 +638,7 @@ def Plot_fate_path(All_data, t_use, All_label, unique_labels, label_names, sourc
         z_min = z.min(dim=0, keepdim=True)[0]
         z_max = z.max(dim=0, keepdim=True)[0]
         z = scaled_output(z)
+        t_use = torch.from_numpy(t_use).to(device)
         l_unique, inverse_indices = torch.unique(t_use, return_inverse=True)
 
         data_t = z[target]

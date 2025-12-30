@@ -1,6 +1,9 @@
 import sys, os
 current_path = os.getcwd()
 sys.path.append(os.path.join(current_path, "downstream_analysis"))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.insert(0, PROJECT_ROOT)
 import anndata
 import torch
 import numpy as np
@@ -13,6 +16,7 @@ config_MET = TRAINING_CONFIGS['MET']
 config_EMT = TRAINING_CONFIGS['EMT']
 config_All = TRAINING_CONFIGS['MET_EMT_All']
 output_dir = os.path.join(current_path, "results", "MET_EMT_analysis")
+os.makedirs(output_dir, exist_ok=True)
 # 1.load data
 adata = anndata.read_h5ad(config_All['data_path'])
 All_data = torch.from_numpy(adata.X).to(DEVICE)
@@ -130,14 +134,14 @@ GeoBridge_analysis.OT_gene_Mean_Dynamic_compair(All_data, All_t, inn_MET, inn_EM
 
 # 12. Plot dynamic driver index
 source = (All_label == source_list[3])
-driver_index_MET, driver_genes_MET = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_MET, HVG, cell_fate_list[3], source, target,
+driver_index_MET, driver_genes_MET = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_MET, genenames, cell_fate_list[3], source, target,
                                             method='kde', reg=2e-2, name='MET', n_top=100, figsize=(3, 3), fontsize=2, title_sz=5,  num_gene_clusters=3, path=output_dir)
-driver_index_EMT, driver_genes_EMT = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_EMT, HVG, cell_fate_list[3], source, target,
+driver_index_EMT, driver_genes_EMT = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_EMT, genenames, cell_fate_list[3], source, target,
                                             method='kde', reg=2e-2, name='EMT', n_top=100, figsize=(3, 3), fontsize=2, title_sz=5,  num_gene_clusters=2, path=output_dir)
 driver_index_list=[driver_index_MET, driver_index_EMT]
 
-path = f'{output_dir}/dynamic_gene_exp'
-Detect_driver.plot_driver_exp_cor(driver_index_list, target_list, path=path)
+path = output_dir
+Detect_driver.plot_driver_exp_cor(driver_index_list, ['MET', 'EMT'], path=path)
 
 
 

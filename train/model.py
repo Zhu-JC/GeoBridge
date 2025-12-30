@@ -45,7 +45,7 @@ def load_trained_model(config: dict, n_dim: int):
         n_dim=n_dim,
         num_blocks=config['num_blocks']
     )
-    model.load_state_dict(torch.load(config['model_path']))
+    model.load_state_dict(torch.load(config['save_path']))
     model.eval()
     print("Model loaded successfully.")
     return model

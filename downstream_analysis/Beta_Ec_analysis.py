@@ -1,6 +1,9 @@
 import sys, os
 current_path = os.getcwd()
 sys.path.append(os.path.join(current_path, "downstream_analysis"))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.insert(0, PROJECT_ROOT)
 import anndata
 import torch
 import numpy as np
@@ -13,6 +16,7 @@ config_beta = TRAINING_CONFIGS['sc_beta']
 config_ec = TRAINING_CONFIGS['sc_ec']
 config_All = TRAINING_CONFIGS['Beta_Ec_All']
 output_dir = os.path.join(current_path, "results", "Beta_Ec_analysis")
+os.makedirs(output_dir, exist_ok=True)
 # 1.load data
 adata = anndata.read_h5ad(config_All['data_path'])
 All_data = torch.from_numpy(adata.X).to(DEVICE)
@@ -126,17 +130,17 @@ genenames = HVG.index.tolist()
 path = f'{output_dir}/dynamic_gene_exp'
 source = (All_label == source_list[0])
 GeoBridge_analysis.OT_gene_Mean_Dynamic_compair(All_data, All_t, inn_beta, inn_ec, cell_fate_list[0], genenames,
-                                                method='kde', source=source, target=target, num_inter=300, use='org', reg1=2e-2, reg2=2e-2, path=path, name1='sc_beta', name2='sc_ec')
+                                                method='kde', source=source, target=target, num_inter=300, use='org', reg1=2e-2, reg2=2e-2, path=path, name1=unique_labels[4], name2=unique_labels[5])
 
 # 12. Plot dynamic driver index
 source = (All_label == source_list[3])
-driver_index_beta, driver_genes_beta = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_beta, HVG, cell_fate_list[3], source, target,
+driver_index_beta, driver_genes_beta = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_beta, genenames, cell_fate_list[3], source, target,
                                             method='kde', reg=2e-2, name='sc_beta', n_top=100, figsize=(3, 3), fontsize=2, title_sz=5,  num_gene_clusters=2, path=output_dir)
-driver_index_ec, driver_genes_ec = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_ec, HVG, cell_fate_list[3], source, target,
+driver_index_ec, driver_genes_ec = Detect_driver.plot_top_Dynamic_driver(All_data, All_t, inn_ec, genenames, cell_fate_list[3], source, target,
                                             method='kde', reg=2e-2, name='sc_ec', n_top=100, figsize=(3, 3), fontsize=2, title_sz=5,  num_gene_clusters=2, path=output_dir)
 driver_index_list=[driver_index_beta, driver_index_ec]
 
-path = f'{output_dir}/dynamic_gene_exp'
+path = output_dir
 Detect_driver.plot_driver_exp_cor(driver_index_list, target_list, path=path)
 
 

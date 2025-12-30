@@ -1,6 +1,9 @@
 import sys, os
 current_path = os.getcwd()
 sys.path.append(os.path.join(current_path, "downstream_analysis"))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.insert(0, PROJECT_ROOT)
 import anndata
 import torch
 import numpy as np
@@ -11,6 +14,7 @@ import GeoBridge_analysis
 config = TRAINING_CONFIGS['MET_EMT_All']
 config_noiso = TRAINING_CONFIGS['MET_EMT_noiso']
 output_dir = os.path.join(current_path, "results", "ablation_study")
+os.makedirs(output_dir, exist_ok=True)
 # 1.load data
 adata = anndata.read_h5ad(config['data_path'])
 All_data = torch.from_numpy(adata.X).to(DEVICE)

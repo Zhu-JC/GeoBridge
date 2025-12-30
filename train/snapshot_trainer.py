@@ -189,5 +189,5 @@ class SnapShotTrainer:
             )
             if val_loss < self.min_val_loss:
                 self.min_val_loss = val_loss
-                self.best_model_state = copy.deepcopy(self.model.state_dict())
+                self.best_model_state = copy.deepcopy(self.model)
                 print(f"  New best model saved with validation loss: {self.min_val_loss:.4f}")

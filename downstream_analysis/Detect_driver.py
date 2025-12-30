@@ -184,9 +184,9 @@ def plot_top_Dynamic_driver(data_All, t_All, inn, HVG, cell_fates, source, targe
     sorted_results = torch.sort(averaged_driver_index, descending=True)
     original_indices = sorted_results[1]  # 排序后的值对应的原始索引
 
-    driver_genes = HVG[original_indices[0:n_top].cpu().detach().numpy()]
+    driver_genes = np.array(HVG)[original_indices[0:n_top].cpu().numpy()]
 
-    data = dynamic_driver_index_matrix[:, original_indices[0:n_top].cpu().detach().numpy()].T
+    data = dynamic_driver_index_matrix[:, original_indices[0:n_top].cpu().numpy()].T
     data_norm = row_normalize(data)
 
     plot_phase_heatmap(data_norm, 'purple', num_gene_clusters, driver_genes, f"Driver Gene Dynamics with {name} path", cmap="coolwarm", figsize=figsize, fontsize=fontsize, title_sz=title_sz, path=path)
@@ -195,7 +195,7 @@ def plot_top_Dynamic_driver(data_All, t_All, inn, HVG, cell_fates, source, targe
 
 def plot_driver_exp_cor(driver_index_list, target_list, path=''):
     for i in range(len(driver_index_list)):
-        df = pd.read_csv(f'{path}/{target_list[i]}.csv', index_col=0)
+        df = pd.read_csv(f'{path}/dynamic_gene_exp/{target_list[i]}.csv', index_col=0)
         df = np.array(df)
         df = df[0:(df.shape[0]-1), :]
         # --- 计算每列的相关性 ---
