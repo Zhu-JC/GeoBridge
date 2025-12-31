@@ -1,5 +1,5 @@
 import numpy as np
-import Get_Probability_Measures
+from downstream_analysis import Get_Probability_Measures
 from tqdm import tqdm
 def fista_ot(C, data_s, data_t, method ='neighbor', lambda_reg=0.1, max_iter=1000, tol=1e-6):
     """

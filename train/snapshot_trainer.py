@@ -2,6 +2,9 @@
 import sys, os
 current_path = os.getcwd()
 sys.path.append(os.path.join(current_path, "train"))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.insert(0, PROJECT_ROOT)
 import torch
 import copy
 from torch.optim.lr_scheduler import CosineAnnealingLR
