@@ -215,14 +215,13 @@ def inter_plot(data_use, t_use, inn, heldout=30, plot='org', reg=3e-2, use_kde=T
         data_s = data_s * (z_max - z_min + 1e-8) + z_min
 
     with torch.no_grad():
-        t = (heldout - l_unique[source-1]) / (l_unique[target-1] - l_unique[source-1])
+        t = (heldout - l_unique[source]) / (l_unique[target] - l_unique[source])
         data_inter = (1 - t) * data_s + t * data_trans
         if plot == 'org':
             data_inter = inn(data_inter, rev=True)[0].cpu().detach().numpy()
         data_true = All_data_np[(t_use == l_unique[inter]).cpu().detach().numpy()]
         if not use_pca:
             data_inter = pca.transform(data_inter)
-            data_true = pca.transform(data_true)
 
         data_true_df = pd.DataFrame(data_inter)
         data_inter_df = pd.DataFrame(data_true)

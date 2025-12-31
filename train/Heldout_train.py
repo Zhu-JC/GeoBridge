@@ -2,6 +2,9 @@
 import sys, os
 current_path = os.getcwd()
 sys.path.append(os.path.join(current_path, "train"))
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
+sys.path.insert(0, PROJECT_ROOT)
 """
 Main training script for the GeoBridge model of heldout test.
 
@@ -58,8 +61,7 @@ def run_training(model_name: str, heldout: int):
     # 4. 构建模型
     inn_model = model_builder.build_inn_model(
         n_dim=n_dim,
-        num_blocks=config['num_blocks'],
-        hidden_dim=config['hidden_dim']
+        num_blocks=config['num_blocks']
     )
 
     # 5. 初始化训练器并开始训练
@@ -79,7 +81,7 @@ def run_training(model_name: str, heldout: int):
 
     # 7. 画heldout生成图
     output_dir = os.path.join(current_path, "results", f"{model_name}_heldout")
-    os.makedirs(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
     inter_plot(All_data, All_t, trainer.best_model_state, heldout=heldout, plot='org', reg=3e-2, use_kde=config['use_kde'], use_pca=config['use_pca'], output_dir=output_dir)
     inter_plot(All_data, All_t, trainer.best_model_state, heldout=heldout, plot='eu', reg=3e-2, use_kde=config['use_kde'], use_pca=config['use_pca'], output_dir=output_dir)
 

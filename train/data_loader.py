@@ -88,11 +88,11 @@ def load_heldout_anndata_to_tensors(
     test_time_np = all_time_np[test_indices]
 
     # 转为 Tensor 并移动到设备
-    train_data = torch.from_numpy(train_data_np).float().to(device)
-    train_time = torch.from_numpy(train_time_np).float().to(device)
+    train_data = torch.from_numpy(train_data_np).to(device)
+    train_time = torch.from_numpy(train_time_np).to(device)
 
-    test_data = torch.from_numpy(test_data_np).float().to(device)
-    test_time = torch.from_numpy(test_time_np).float().to(device)
+    test_data = torch.from_numpy(test_data_np).to(device)
+    test_time = torch.from_numpy(test_time_np).to(device)
 
     n_dim = train_data.shape[1]
 

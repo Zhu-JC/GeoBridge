@@ -9,7 +9,7 @@ BASE_SAVE_DIR = Path("./results")
 # --- Multi-Model Training Configurations ---
 TRAINING_CONFIGS = {
     "EMT": {
-        "data_path": Path("/data/adata_EMT.h5ad"),
+        "data_path": Path("./data/adata_EMT.h5ad"),
         "save_path": BASE_SAVE_DIR / 'model',
         "time_column": "day",
         "is_sparse": False,
