@@ -122,7 +122,7 @@ class SnapShotTrainer:
         self.min_val_loss = float('inf')
         self.cor_list = []
         self.pseudotime_list = []
-        cor = np.corrcoef(self.pseudotime, self.true_t)[0, 1]
+        cor = np.corrcoef(self.pseudotime, self.true_t.cpu().detach().numpy())[0, 1]
         self.cor_list.append(cor)
 
     def train(self):
@@ -162,7 +162,7 @@ class SnapShotTrainer:
                     z2 = scaled_output(z2)
                     All_data_np = z2.cpu().numpy()
                     self.pseudotime, self.train_t_np = get_All_t(All_data_np, self.cluster_labels, init_target=self.init_target)
-                    cor = np.corrcoef(self.pseudotime, self.true_t)[0, 1]
+                    cor = np.corrcoef(self.pseudotime, self.true_t.cpu().detach().numpy())[0, 1]
 
                     self.pseudotime_list.append(self.pseudotime)
                     self.cor_list.append(cor)
