@@ -4,7 +4,6 @@ from sklearn.decomposition import PCA as PCA2
 import numpy as np
 from scipy.stats import gaussian_kde
 import torch
-from torch_pca import PCA
 # 基因表达数据保存在一个DataFrame中，每行代表一个细胞，每列代表一个基因
 # 使用PCA降维
 def Neighbor_Measures(data, n_components=10, threshold=10, epsilon=1e-10):
