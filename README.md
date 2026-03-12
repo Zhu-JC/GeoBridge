@@ -37,6 +37,7 @@ pip install -r requirements.txt
 ```
 python train/GeoBridge_train.py --model MET
 python train/GeoBridge_train.py --model EMT
+(about 10 min)
 ```
 ### Downstream analysis 📈
 ```
