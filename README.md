@@ -37,7 +37,6 @@ pip install -r requirements.txt
 ```
 python train/GeoBridge_train.py --model MET
 python train/GeoBridge_train.py --model EMT
-(about 10 min)
 ```
 ### Downstream analysis 📈
 ```
@@ -55,6 +54,8 @@ python downstream_analysis/EMT_pseudotime_analysis.py
 ```
 python train/Heldout_train.py --model EMT --heldout 12
 ```
+## Implementation Details
+The experiments were conducted on a workstation equipped with an NVIDIA GeForce RTX 3060 GPU. For a standard training configuration with a batch size of 3,000 cells, 2,000 highly variable genes (HVGs), and 500 epochs, the training process is typically completed in approximately 10 minutes.
 ## Project Structure 🌈
 GeoBridge/   
 ├── train/                   
